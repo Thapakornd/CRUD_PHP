@@ -9,7 +9,10 @@
 </head>
 <body>
     <div class="container-md">
-    <table class="table">
+        <h1 class="mt-5">Information Page</h1>
+        <a href="insert.php" class="btn btn-success">Insert Data</a>
+        <hr>
+        <table class="table">
             <thead>
                 <th>#</th>
                 <th>User ID</th>

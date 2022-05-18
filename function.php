@@ -17,8 +17,12 @@
         }
 
         public function insert($user_id,$user_email,$user_pass){
-            $result = mysqli_query($this->dbcon, "INSERT INTO users(user_id,user_email,user_pass) VALUES ($user_id,$user_email,$user_pass)");
-            return $result;
+
+            $query = mysqli_query($this->dbcon, "SELECT * FROM users WHERE user_id = '$user_id' OR user_email = '$user_email'");
+            if(!$query){
+                $result = mysqli_query($this->dbcon, "INSERT INTO users(user_id,user_email,user_pass) VALUES ('$user_id','$user_email','$user_pass')");
+                return $result;
+            }
         }
 
         public function fetchdata(){
