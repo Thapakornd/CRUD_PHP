@@ -34,6 +34,12 @@
             return $result;
         }
 
+        public function fetch_one($user_id)
+        {
+            $result = mysqli_query($this->dbcon, "SELECT * FROM users WHERE user_id = '$user_id'");
+            return $result;
+        }
+
         public function update($user_id,$user_email,$user_pass)
         {
             $result = mysqli_query($this->dbcon, "UPDATE users SET 

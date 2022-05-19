@@ -14,9 +14,52 @@
         <?php
             
             include_once('function.php');
+
+            $update_data = new DB_con;
+
             $user_id = $_GET['user_id'];
+
+            if(isset($_POST['update'])){
+
+                $user_id = $_POST['user_id'];
+                $user_email = $_POST['user_email'];
+                $user_pass = $_POST['user_pass'];
+
+                $sql1 = $update_data->update($user_id,$user_email,$user_pass);
+
+                if($sql1)
+                {
+                    echo "<script> alert('Update successfully!'); </script>";
+                    echo "<script> window.location.href='index.php' </script>";
+                }else
+                {
+                    echo "<script> alert('Something went wrong pls try again!') </script>";
+                }
+            }
+
+            $update_user = new DB_con;
+            $sql = $update_user->fetch_one($user_id);
+            while($row = mysqli_fetch_array($sql)){
         
         ?>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="user_id" class="form-label">Username</label>
+                <input type="text" class="form-control" name="user_id" value="<?php echo $row['user_id']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="user_email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="user_email" value="<?php echo $row['user_email']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="user_pass">Password</label>
+                <input type="text" class="form-control" name="user_pass" value="<?php echo $row['user_pass']; ?>">
+            </div>
+    
+            <button type="submit" name="update" class="btn btn-success">Update</button>
+        </form>
+
+        <?php } ?>
     </div>
 </body>
 </html>
