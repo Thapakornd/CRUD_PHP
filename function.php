@@ -51,6 +51,21 @@
             
             return $result;
         }
+
+        public function randnum($length)
+        {
+            $text = "";
+            if($length < 5)
+            {
+                $length = 5;
+            }
+
+            $len = rand(4,$lenght);
+
+            for ($i=0;$i < $len; $i++) { 
+                $text .= rand(0,9);
+            }
+        }
     }
 
 

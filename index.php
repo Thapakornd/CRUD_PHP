@@ -14,6 +14,7 @@
         <hr>
         <table class="table">
             <thead>
+                <th>ID</th>
                 <th>User ID</th>
                 <th>User Email</th>
                 <th>User Password</th>
