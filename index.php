@@ -34,12 +34,12 @@
                 
                     <tr>
                         <td><?php echo $row['id']?></td>
-                        <td><?php echo $row['user_id']?></td>
+                        <td><?php echo $row['username']?></td>
                         <td><?php echo $row['user_email']?></td>
                         <td><?php echo $row['user_pass']?></td>
                         <td><?php echo $row['date']?></td>
-                        <td><a href="update.php?user_id=<?php echo $row['user_id']; ?>" class="btn btn-primary">Edit</a></td>
-                        <td><a href="delete.php?user_id=<?php echo $row['user_id']; ?>" class="btn btn-danger">Delete</a></td>
+                        <td><a href="update.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edit</a></td>
+                        <td><a href="delete.php?username=<?php echo $row['username']; ?>" class="btn btn-danger">Delete</a></td>
                     </tr>
                 <?php 
                     }

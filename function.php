@@ -16,14 +16,14 @@
             }
         }
 
-        public function insert($user_id,$user_email,$user_pass){
+        public function insert($username,$user_email,$user_pass){
 
             $query = mysqli_query($this->dbcon, "SELECT * FROM users");
             $user_data = mysqli_fetch_assoc($query);
 
-            if($user_data['user_id'] != $user_id && $user_data['user_email'] != $user_email)
+            if($user_data['username'] != $username && $user_data['user_email'] != $user_email)
             {
-                $result = mysqli_query($this->dbcon, "INSERT INTO users(user_id,user_email,user_pass) VALUES ('$user_id','$user_email','$user_pass')");
+                $result = mysqli_query($this->dbcon, "INSERT INTO users(username,user_email,user_pass) VALUES ('$username','$user_email','$user_pass')");
                 return $result;
             }
         
@@ -34,38 +34,29 @@
             return $result;
         }
 
-        public function fetch_one($user_id)
+        public function fetch_one($id)
         {
-            $result = mysqli_query($this->dbcon, "SELECT * FROM users WHERE user_id = '$user_id'");
+            $result = mysqli_query($this->dbcon, "SELECT * FROM users WHERE id = '$id'");
             return $result;
         }
 
-        public function update($user_id,$user_email,$user_pass)
+        public function update($username,$user_email,$user_pass)
         {
             $result = mysqli_query($this->dbcon, "UPDATE users SET 
-            user_id = '$user_id',
+            username = '$username',
             user_email = '$user_email',
             user_pass = '$user_pass'
-            WHERE user_id = '$user_id'
-            ");
+            WHERE username = '$username'");
             
             return $result;
         }
 
-        public function randnum($length)
+        public function delete($username)
         {
-            $text = "";
-            if($length < 5)
-            {
-                $length = 5;
-            }
-
-            $len = rand(4,$lenght);
-
-            for ($i=0;$i < $len; $i++) { 
-                $text .= rand(0,9);
-            }
+            $deleterec = mysqli_query($this->dbcon, "DELETE FROM users WHERE username = '$username'");
+            return $deleterec;
         }
+
     }
 
 

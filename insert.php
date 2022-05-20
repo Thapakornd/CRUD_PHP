@@ -6,14 +6,14 @@
 
     if(isset($_POST['Insert'])){
         
-        $user_id = $_POST['user_id'];
+        $username = $_POST['username'];
         $user_email = $_POST['user_email'];
         $user_pass = $_POST['user_pass'];
         $user_con = $_POST['user_con'];
 
         if($user_pass == $user_con)
         {
-            $sql = $insertdata->insert($user_id,$user_email,$user_pass);
+            $sql = $insertdata->insert($username,$user_email,$user_pass);
 
             if($sql)
             {
@@ -46,7 +46,7 @@
         <form method="POST">
             <div class="mb-3">
                 <label for="user_id" class="form-label">Username</label>
-                <input type="text" class="form-control" name="user_id" require>
+                <input type="text" class="form-control" name="username" require>
             </div>
             <div class="mb-3">
                 <label for="user_email" class="form-label">Email</label>
